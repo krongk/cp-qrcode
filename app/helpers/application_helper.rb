@@ -13,6 +13,8 @@ module ApplicationHelper
     ['J', '跳转'],
   ]
 
+  TEMP_DIR = "#{Rails.root}/public/templetes/"
+
   SPECIAL_SYMBO_REG = /(,|;|:|\.|\||\\|，|；|。|、)/
 
   def display_base_errors resource
@@ -117,8 +119,12 @@ module ApplicationHelper
   def get_short_title(typo, title)
     return if title.blank?
     st = Pinyin.t(title).gsub(/(-|\s+)/, '-').gsub(/[^\w-]/, '')
-    st = st.to_s.squeeze('-')[0..10].gsub(/\W+$/, '')
+    st = st.to_s.squeeze('-')[0..20].gsub(/\W+$/, '')
     case typo
+    when 'theme'
+      while Admin::Theme.where(short_title: st).any?
+        st += ('a'..'z').to_a[rand(26)]
+      end
     when 'channel'
       while Admin::Channel.where(short_title: st).any?
         st += ('a'..'z').to_a[rand(26)]
@@ -158,15 +164,16 @@ module ApplicationHelper
   #将pages数组按照每count一组分组，用于frontpage特殊展示
   # [1,2,3,'a', 'b', 'c','d'] => [[1, 2, 3], ["a", "b", "c"], ["d"]]
   def get_slice_pages(pages, count)
-    pages_dup = pages
-    slice_pages = []
-    while pages_dup.size > count do
-      tmp_pages = pages_dup.slice(0, count)
-      slice_pages << tmp_pages
-      pages_dup = pages_dup - tmp_pages
-    end
-    slice_pages << pages_dup
-    slice_pages
+    pages.in_groups_of(4, false)
+    # pages_dup = pages
+    # slice_pages = []
+    # while pages_dup.size > count do
+    #   tmp_pages = pages_dup.slice(0, count)
+    #   slice_pages << tmp_pages
+    #   pages_dup = pages_dup - tmp_pages
+    # end
+    # slice_pages << pages_dup
+    # slice_pages
   end
 
 end

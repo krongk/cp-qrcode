@@ -21,4 +21,9 @@ user.add_role :admin
 
 puts 'init templetes'
 Admin::Keystore.put('templete', 'default')
-Admin::Keystore.put('site_name', 'Rain CMS')
+Admin::Keystore.put('site_name', '产品二维码展示系统')
+
+puts 'init channel'
+Admin::Channel.create(title: '首页', short_title: 'index', user_id: 1, tmp_index: '', tmp_detail: '')
+
+Admin::Theme.create(title: '默认', short_title: 'default')

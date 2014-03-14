@@ -10,12 +10,12 @@ class ApplicationController < ActionController::Base
   before_filter :load_templete
 
   #catch exception
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_path, :alert => '没有权限访问，请联系管理员！'
-  end
-  rescue_from ActionController::RoutingError do |exception|
-    redirect_to root_path
-  end
+  # rescue_from CanCan::AccessDenied do |exception|
+  #   redirect_to root_path, :alert => '没有权限访问，请联系管理员！'
+  # end
+  # rescue_from ActionController::RoutingError do |exception|
+  #   redirect_to root_path
+  # end
 
   private
   #detect if a mobile device

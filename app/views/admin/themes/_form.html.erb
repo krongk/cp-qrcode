@@ -1,0 +1,17 @@
+<h1>产品模版</h1>
+
+<%= simple_form_for(@admin_theme) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :short_title %>
+    <%= f.input :image_path %>
+    <%= f.input :description %>
+    <%= f.input :properties %>
+  </div>
+  <hr/>
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -2,6 +2,7 @@ class CreateAdminChannels < ActiveRecord::Migration
   def change
     create_table :admin_channels, :options=>'charset=utf8' do |t|
       t.references :user, index: true
+      t.references :theme, index: true
       t.integer :parent_id
       t.string :typo
       t.string :title

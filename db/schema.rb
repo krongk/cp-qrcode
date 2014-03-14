@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124050217) do
+ActiveRecord::Schema.define(version: 20140314124437) do
 
   create_table "admin_channels", force: true do |t|
     t.integer  "user_id"
+    t.integer  "theme_id"
     t.integer  "parent_id"
     t.string   "typo"
     t.string   "title"
@@ -32,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140124050217) do
   end
 
   add_index "admin_channels", ["short_title"], name: "index_admin_channels_on_short_title", unique: true, using: :btree
+  add_index "admin_channels", ["theme_id"], name: "index_admin_channels_on_theme_id", using: :btree
   add_index "admin_channels", ["title"], name: "index_admin_channels_on_title", unique: true, using: :btree
   add_index "admin_channels", ["user_id"], name: "index_admin_channels_on_user_id", using: :btree
 
@@ -43,12 +45,12 @@ ActiveRecord::Schema.define(version: 20140124050217) do
     t.string   "qq"
     t.string   "address"
     t.string   "gender"
-    t.string   "birth"
+    t.date     "birth"
     t.string   "hobby"
-    t.string   "content"
-    t.string   "content2"
-    t.string   "content3"
-    t.string   "status",       default: "未处理"
+    t.text     "content"
+    t.text     "content2"
+    t.text     "content3"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,7 +74,12 @@ ActiveRecord::Schema.define(version: 20140124050217) do
     t.string   "keywords"
     t.string   "description"
     t.string   "image_path"
+    t.string   "video_path"
+    t.string   "qrcode_path"
+    t.integer  "count"
+    t.string   "unit_amout"
     t.text     "content"
+    t.text     "img_content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -80,6 +87,15 @@ ActiveRecord::Schema.define(version: 20140124050217) do
   add_index "admin_pages", ["channel_id"], name: "index_admin_pages_on_channel_id", using: :btree
   add_index "admin_pages", ["short_title"], name: "index_admin_pages_on_short_title", using: :btree
   add_index "admin_pages", ["user_id"], name: "index_admin_pages_on_user_id", using: :btree
+
+  create_table "admin_themes", force: true do |t|
+    t.string   "title"
+    t.string   "short_title"
+    t.string   "description"
+    t.string   "properties"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ckeditor_assets", force: true do |t|
     t.string   "data_file_name",               null: false
@@ -123,6 +139,15 @@ ActiveRecord::Schema.define(version: 20140124050217) do
 
   create_table "tags", force: true do |t|
     t.string "name"
+  end
+
+  create_table "themes", force: true do |t|
+    t.string   "title"
+    t.string   "short_title"
+    t.string   "description"
+    t.string   "properties"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|

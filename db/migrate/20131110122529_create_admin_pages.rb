@@ -9,8 +9,13 @@ class CreateAdminPages < ActiveRecord::Migration
       t.string :keywords
       t.string :description
       t.string :image_path
+      t.string :video_path
+      t.string :qrcode_path
+      t.integer :count
+      t.string :unit_amout
       t.text :content
-
+      t.text :img_content
+      
       t.timestamps
     end
     add_index :admin_pages, :short_title  

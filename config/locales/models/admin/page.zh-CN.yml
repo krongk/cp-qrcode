@@ -2,18 +2,22 @@
 zh-CN:
   activerecord:
     models:
-      admin/page: 页面
+      admin/page: 产品
     attributes:
       admin/page:
           user: 发布者
-          channel: 栏目
-          title: 页面标题
+          channel: 产品系列
+          title: 产品标题
           short_title: 简略标题
-          properties: 页面属性
+          properties: 产品型号
           keywords: 关键词
           description: 摘要描述
           image_path: 缩略图
-          content: 页面内容
+          count: 库存
+          unit_amout: 单位
+          video_path: 视频路径
+          img_content: 产品图片(可添加多张)
+          content: 产品详细介绍
     errors:
       page: 
   helpers:

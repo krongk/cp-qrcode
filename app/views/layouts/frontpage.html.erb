@@ -21,7 +21,7 @@
     <%= stylesheet_link_tag "frontpage", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "frontpage", "data-turbolinks-track" => true %>
    
-    <%= render file: ApplicationHelper::TEMP_DIR + @channel.theme.short_title + '/_head.html' %>
+    <%= render file: ApplicationHelper::TEMP_DIR + @channel.theme_name + '/_head.html' %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -35,23 +35,23 @@
 
     <% unless params[:search] || params[:tag] || params[:controller] == 'comments' %>
       <% if @page %>
-        <% if File.exist?( ApplicationHelper::TEMP_DIR + @channel.theme.short_title + '/detail.html' )%>
-          <%= render file: ApplicationHelper::TEMP_DIR + @channel.theme.short_title + '/detail.html'  %>
+        <% if File.exist?( ApplicationHelper::TEMP_DIR + @channel.theme_name + '/detail.html' )%>
+          <%= render file: ApplicationHelper::TEMP_DIR + @channel.theme_name + '/detail.html'  %>
         <% else %>
-          <h1>找不到模版文件： <%= ApplicationHelper::TEMP_DIR + @channel.theme.short_title + '/detail.html' %>  </h1>
+          <h1>找不到模版文件： <%= ApplicationHelper::TEMP_DIR + @channel.theme_name + '/detail.html' %>  </h1>
         <% end %>
       <% else %> 
-        <% if File.exist?( ApplicationHelper::TEMP_DIR + @channel.theme.short_title + '/list.html' )%>
-          <%= render file: ApplicationHelper::TEMP_DIR + @channel.theme.short_title + '/list.html'  %>
+        <% if File.exist?( ApplicationHelper::TEMP_DIR + @channel.theme_name + '/list.html' )%>
+          <%= render file: ApplicationHelper::TEMP_DIR + @channel.theme_name + '/list.html'  %>
         <% else %>
-          <h1>找不到模版文件： <%= ApplicationHelper::TEMP_DIR + @channel.theme.short_title + '/list.html' %>  </h1>
+          <h1>找不到模版文件： <%= ApplicationHelper::TEMP_DIR + @channel.theme_name + '/list.html' %>  </h1>
         <% end %>
       <% end %>
     <% end %>
     
     <%= yield %>
 
-    <%= render file: ApplicationHelper::TEMP_DIR + @channel.theme.short_title + '/_foot.html' %>
+    <%= render file: ApplicationHelper::TEMP_DIR + @channel.theme_name + '/_foot.html' %>
     
   </body>
 </html>

@@ -15,7 +15,7 @@
     <div class="col-md-10">
       <div class="form-inputs">
         <label class="string optional control-label" for="admin_channel_typo">选择产品展示模版：</label>
-        <%= f.select :theme_id, Admin::Theme.all.map{|s| [s.title, s.id]}, include_blank: false %>
+        <%= f.select :theme_name, Admin::Theme.all.map{|s| [s.title, s.id]}, include_blank: false %>
         <br>
         
         <!-- <label class="string optional control-label" for="admin_channel_properties">父级产品系列：<small>(没有父级则不选)</small></label> -->

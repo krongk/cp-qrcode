@@ -16,6 +16,7 @@ zh-CN:
         tmp_detail: 详细页面模板
         keywords: 关键词
         description: 系列描述
+        theme_name: 主题风格
         content: 系列内容
     errors:
       channel: 
